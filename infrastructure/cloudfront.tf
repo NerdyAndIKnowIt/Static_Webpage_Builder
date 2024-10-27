@@ -9,12 +9,20 @@ resource "aws_cloudfront_distribution" "cloudfront" {
       cached_methods = ["GET", "HEAD", "OPTIONS"]
       target_origin_id = aws_s3_bucket.bucket.bucket
       viewer_protocol_policy = "redirect-to-https"
+
+      forwarded_values {
+        query_string = false
+
+        cookies {
+          forward = "none"
+        }
+      }
     }
-    
+
     origin {
-      domain_name = aws_s3_bucket.bucket.bucket_domain_name
+      domain_name = aws_s3_bucket.bucket.bucket_regional_domain_name
       origin_access_control_id = aws_cloudfront_origin_access_control.origin_access_control.id
-      origin_id = aws_s3_bucket.bucket.id
+      origin_id = aws_s3_bucket.bucket.bucket
     }
 
     restrictions {
@@ -29,11 +37,15 @@ resource "aws_cloudfront_distribution" "cloudfront" {
     }
 
     depends_on = [
-        aws_s3_bucket_website_configuration.bucket_website,
+        //aws_s3_bucket_website_configuration.bucket_website,
         aws_acm_certificate_validation.cert
     ]
 }
-
+/*
+output "s3_website_endpoint" {
+  value = "${var.domain_name}.s3-website-${var.region}.amazonaws.com"
+}
+*/
 resource "aws_cloudfront_origin_access_control" "origin_access_control" {
   name = "s3_origin_access_control"
   origin_access_control_origin_type = "s3"

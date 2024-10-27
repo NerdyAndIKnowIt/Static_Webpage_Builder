@@ -2,11 +2,11 @@ resource "aws_acm_certificate" "ssl_cert" {
   domain_name = var.domain_name
   validation_method = "DNS"
 
-  depends_on = [ aws_route53_record.domain_A ]
+  //depends_on = [ aws_route53_record.domain_A ]
 }
 
 resource "aws_route53_record" "cert_validation" {
-    zone_id = aws_route53_zone.primary.zone_id
+    zone_id = data.aws_route53_zone.selected_zone.zone_id
     name = each.value.name
     type = each.value.type
     ttl = 60
@@ -19,7 +19,7 @@ resource "aws_route53_record" "cert_validation" {
         }
     }
 
-    depends_on = [ aws_route53_record.domain_A ]
+    //depends_on = [ aws_route53_record.domain_A ]
 }
 
 resource "aws_acm_certificate_validation" "cert" {

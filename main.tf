@@ -6,6 +6,8 @@ module "infrastructure" {
   source       = "./infrastructure"
   domain_name  = var.domain_name
   index        = var.index
+
+  /*
   first_name   = var.first_name
   last_name    = var.last_name
   email        = var.email
@@ -15,4 +17,5 @@ module "infrastructure" {
   state        = var.state
   country_code = var.country_code
   zip_code     = var.zip_code
+  */
 }

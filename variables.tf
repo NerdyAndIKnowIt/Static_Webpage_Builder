@@ -7,9 +7,16 @@ variable "domain_name" {
   default = "default"
   type    = string
 }
-
+/*
+variable "zone_id" {
+  default = "default"
+  type    = string
+}
+*/
 //contact information for domain registration
 //these will be used for the admin contact, registrant contact, and tech contact fields
+
+/*
 variable "first_name" {
   default = "firstname"
   type    = string
@@ -54,6 +61,7 @@ variable "zip_code" {
   default = "12345"
   type    = string
 }
+*/
 
 //the default file for the website in the s3 bucket
 variable "index" {
