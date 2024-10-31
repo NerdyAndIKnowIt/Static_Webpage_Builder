@@ -1,5 +1,5 @@
 # Static_Webpage_Builder 
-Version V1.00
+Version V1.01
 ### Terraform template that builds all the virtual infrastructure needed for a secure static website on AWS in a few simple steps!
 
 Creates the following resources and has the following features:
@@ -33,10 +33,9 @@ Creates the following resources and has the following features:
 5. Import the github repository to the desired location on your computer using this command in terminal OR git bash for Windows: git clone github.com/NerdyAndIKnowIt/Static_Webpage_Builder
 6. Place the static website assets inside the static_webpage_builder/website directory
 7. In the declare_variables.tfvars file, edit the index file and domain name variables. The index file is the first file that users will be directed to in your website in the static_webpage_builder/website directory. The domain is the fully qualified domain name that you registered in step 3. Be sure to leave the "quotes" around each variable.
-8. In the command prompt/terminal in the static_webpage_builder directory, initialize Terraform using this command: terraform init
-9. Run this command to check for any errors before deployment: terraform plan
-10. Apply the Terraform template using this command, YOU MUST INCLUDE THE TFVARS FILE LIKE SO: terraform apply -var-file=declare_variables.tfvars
-11. Please be paitent, the deployment may take 10 minutes or longer.
+8. In the command prompt/terminal inside the static_webpage_builder directory, initialize Terraform using this command: terraform init
+9. Apply the Terraform template using this command, YOU MUST INCLUDE THE TFVARS FILE LIKE SO: terraform apply -var-file=declare_variables.tfvars
+10. Please be paitent, the deployment may take 10 minutes or longer.
 
 
 ### How to delete the provisioned resources
@@ -50,3 +49,4 @@ Creates the following resources and has the following features:
 - V0.02 10/18/24 added acm, cloudfront, route 53, S3 and lots of debugging. Updated instructions.
 - V0.03 10/25/24 removed domain registration after several failed tests
 - V1.00 10/26/24 first working version, corrected s3.tf and cloudfront.tf webhosting issues
+- V1.01 10/31/24 made the s3 bucket private, removed unnecessary code

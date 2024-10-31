@@ -1,8 +1,6 @@
 resource "aws_acm_certificate" "ssl_cert" {
   domain_name = var.domain_name
   validation_method = "DNS"
-
-  //depends_on = [ aws_route53_record.domain_A ]
 }
 
 resource "aws_route53_record" "cert_validation" {
@@ -19,7 +17,6 @@ resource "aws_route53_record" "cert_validation" {
         }
     }
 
-    //depends_on = [ aws_route53_record.domain_A ]
 }
 
 resource "aws_acm_certificate_validation" "cert" {
